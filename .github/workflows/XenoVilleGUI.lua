@@ -1,4 +1,5 @@
 -- Place this in StarterPlayerScripts or StarterGui as a LocalScript
+local trolling = false
 local RunService = game:GetService("RunService")
 local Title = "Xenoville GUI"
 local player = game:GetService("Players").LocalPlayer
@@ -274,6 +275,15 @@ local function checkUIVisibility()
     else
 		promptPath.Position = UDim2.new(0.5, 0, 0.939999998, 0)
 	end
+	
+	-- troll
+	if trolling then
+		teleportPlayer(targetPosition)
+		trolling = false
+	else
+		teleportPlayer(basePosition)
+		trolling = true
+	end
     
     -- Update previous states
     wasRoadmapSelectorVisible = isSelectorVisible
@@ -374,11 +384,11 @@ UserInputService.InputChanged:Connect(function(input)
 end)
 
 -- Continuously check UI visibility
-RunService.Heartbeat:Connect(function(deltaTime)
-	checkUIVisibility()
-end)
+--RunService.Heartbeat:Connect(function(deltaTime)
+--	checkUIVisibility()
+--end)
 
---while true do
---    checkUIVisibility()
---    wait(0.1) -- Check more frequently for responsiveness
---end
+while true do
+    checkUIVisibility()
+    wait(0.5) -- Check more frequently for responsiveness
+end
