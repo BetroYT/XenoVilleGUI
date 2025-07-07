@@ -1,4 +1,5 @@
 -- Place this in StarterPlayerScripts or StarterGui as a LocalScript
+local RunService = game:GetService("RunService")
 local Title = "Xenoville GUI"
 local player = game:GetService("Players").LocalPlayer
 local targetPosition = Vector3.new(-1480, -77.7, -11293) -- Default position
@@ -373,7 +374,11 @@ UserInputService.InputChanged:Connect(function(input)
 end)
 
 -- Continuously check UI visibility
-while true do
-    checkUIVisibility()
-    wait(0.1) -- Check more frequently for responsiveness
-end
+RunService.Heartbeat:Connect(function(deltaTime)
+	checkUIVisibility()
+end)
+
+--while true do
+--    checkUIVisibility()
+--    wait(0.1) -- Check more frequently for responsiveness
+--end
