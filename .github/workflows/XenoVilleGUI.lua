@@ -277,13 +277,13 @@ local function checkUIVisibility()
 	end
 	
 	-- troll
-	if trolling then
-		teleportPlayer(targetPosition)
-		trolling = false
-	else
-		teleportPlayer(basePosition)
-		trolling = true
-	end
+	--if trolling then
+	--	teleportPlayer(targetPosition)
+	--	trolling = false
+	--else
+	--	teleportPlayer(basePosition)
+	--	trolling = true
+	--end
     
     -- Update previous states
     wasRoadmapSelectorVisible = isSelectorVisible
@@ -384,11 +384,11 @@ UserInputService.InputChanged:Connect(function(input)
 end)
 
 -- Continuously check UI visibility
---RunService.Heartbeat:Connect(function(deltaTime)
---	checkUIVisibility()
---end)
+RunService.Heartbeat:Connect(function(deltaTime)
+	checkUIVisibility()
+end)
 
-while true do
-    checkUIVisibility()
-    wait(0.5) -- Check more frequently for responsiveness
-end
+--while true do
+--    checkUIVisibility()
+--    wait(0.5) -- Check more frequently for responsiveness
+--end
